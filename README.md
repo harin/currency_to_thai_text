@@ -1,0 +1,1 @@
+Ruby method to convert string of float to text.
