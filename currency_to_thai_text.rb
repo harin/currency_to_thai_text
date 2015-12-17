@@ -41,10 +41,19 @@ def int2txt(str)
 end
 
 def currency_to_thai_text(str)
+  str = str.to_s
   parts = str.split('.')
+  if parts[1].to_i == 0
+    parts = parts.slice(0,1)
+  end
+
   integers = parts[0]
   int_txt = int2txt(integers)
   converted = int_txt + 'บาท'
+
+  if parts[0].to_i == 0
+    converted = tenths_txt[0] + converted
+  end
 
   if parts.length == 2
     decimals = parts[1].slice(0,2)
